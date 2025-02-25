@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Navbar from "./components/Navbar";
+import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
 import { ProblemStatement } from "./components/ProblemStatement";
 import { ProblemSolution } from "./components/ProblemSolution";
