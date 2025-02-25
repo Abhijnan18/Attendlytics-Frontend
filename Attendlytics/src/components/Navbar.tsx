@@ -1,12 +1,71 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { HoveredLink, Menu, MenuItem, ProductItem } from "./ui/navbar-menu";
+import { cn } from "@/lib/utils";
 
-export default function Navbar() {
+export function Navbar({ className }: { className?: string }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [active, setActive] = useState<string | null>(null);
+
 
   return (
-    <nav className="bg-gradient-to-br from-[#050505] to-[rgba(5,5,5,0.9)] fixed w-full top-0 left-0 z-50">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-start mx-auto p-6">
+    <nav>
+      <div
+        className={cn("hidden md:block fixed top-10 inset-x-0 max-w-2xl mx-auto z-50", className)}
+      >
+        <Menu setActive={setActive}>
+          <MenuItem setActive={setActive} active={active} item="Services">
+            <div className="flex flex-col space-y-4 text-sm">
+              <HoveredLink href="#">Web Development</HoveredLink>
+              <HoveredLink href="#">Interface Design</HoveredLink>
+              <HoveredLink href="#">Search Engine Optimization</HoveredLink>
+              <HoveredLink href="#">Branding</HoveredLink>
+            </div>
+          </MenuItem>
+          <MenuItem setActive={setActive} active={active} item="Products">
+            <div className="  text-sm grid grid-cols-2 gap-10 p-4">
+              <ProductItem
+                title="Algochurn"
+                href="https://algochurn.com"
+                src="https://assets.aceternity.com/demos/algochurn.webp"
+                description="Prepare for tech interviews like never before."
+              />
+              <ProductItem
+                title="Tailwind Master Kit"
+                href="https://tailwindmasterkit.com"
+                src="https://assets.aceternity.com/demos/tailwindmasterkit.webp"
+                description="Production ready Tailwind css components for your next project"
+              />
+              <ProductItem
+                title="Moonbeam"
+                href="https://gomoonbeam.com"
+                src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.51.31%E2%80%AFPM.png"
+                description="Never write from scratch again. Go from idea to blog in minutes."
+              />
+              <ProductItem
+                title="Rogue"
+                href="https://userogue.com"
+                src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.47.07%E2%80%AFPM.png"
+                description="Respond to government RFPs, RFIs and RFQs 10x faster using AI"
+              />
+            </div>
+          </MenuItem>
+          <MenuItem setActive={setActive} active={active} item="Pricing">
+            <div className="flex flex-col space-y-4 text-sm">
+              <HoveredLink href="#">Hobby</HoveredLink>
+              <HoveredLink href="#">Individual</HoveredLink>
+              <HoveredLink href="#">Team</HoveredLink>
+              <HoveredLink href="#">Enterprise</HoveredLink>
+            </div>
+          </MenuItem>
+        </Menu>
+      </div>
+
+
+
+
+      {/* <div className="bg-gradient-to-br from-[#050505] to-[rgba(5,5,5,0.9)] fixed w-full top-0 left-0 z-50"></div> */}
+      <div className="md:hidden max-w-screen-xl flex flex-wrap items-center justify-start mx-auto p-6">
         <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
           <span className="text-2xl text-gray-100">
             <svg
@@ -197,6 +256,6 @@ export default function Navbar() {
           </ul>
         </div>
       </div>
-    </nav>
+    </nav >
   );
 }
