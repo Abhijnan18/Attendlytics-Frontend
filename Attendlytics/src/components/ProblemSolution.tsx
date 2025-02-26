@@ -16,7 +16,7 @@ export function ProblemSolution() {
                     ease: "easeInOut",
                 }}
             >
-                <div className="mt-24 bg-gradient-to-br from-slate-300 to-white py-4 bg-clip-text text-center text-5xl font-medium tracking-tight text-transparent md:text-7xl"
+                <div className="mt-24 bg-gradient-to-br from-slate-300 to-white py-4 bg-clip-text text-center text-6xl font-medium tracking-tight text-transparent md:text-7xl"
                 >
                     Meet
                     <br />

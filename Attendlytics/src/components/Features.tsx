@@ -4,24 +4,26 @@ import createGlobe from "cobe";
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { IconBrandYoutubeFilled } from "@tabler/icons-react";
+import { Cover } from "@/components/ui/cover";
 
 
 export function Features() {
   const features = [
+
+    {
+      title: "Capture pictures with AI",
+      description:
+        "Capture stunning photos effortlessly using our advanced AI technology.",
+      skeleton: <SkeletonTwo />,
+      className: "border-b col-span-1 lg:col-span-2 lg:border-r border-neutral-800",
+    },
     {
       title: "Track issues effectively",
       description:
         "Track and manage your project issues with ease using our intuitive interface.",
       skeleton: <SkeletonOne />,
       className:
-        "col-span-1 lg:col-span-4 border-b lg:border-r border-neutral-800",
-    },
-    {
-      title: "Capture pictures with AI",
-      description:
-        "Capture stunning photos effortlessly using our advanced AI technology.",
-      skeleton: <SkeletonTwo />,
-      className: "border-b col-span-1 lg:col-span-2 border-neutral-800",
+        "col-span-1 lg:col-span-4 border-b  border-neutral-800",
     },
     {
       title: "Watch our AI on YouTube",
@@ -43,12 +45,11 @@ export function Features() {
     <div className="relative z-20 py-10 pt-0 lg:py-40 lg:pt-0 max-w-6xl mx-auto">
       <div className="px-8">
         <h4 className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-white">
-          Packed with thousands of features
+          Packed with features to <br />roll attendance <Cover>warp speed</Cover>
         </h4>
 
         <p className="text-sm lg:text-base  max-w-2xl  my-4 mx-auto text-center font-normal text-neutral-300">
-          From Image generation to video generation, Everything AI has APIs for
-          literally everything. It can even create this website copy for you.
+          Snap a picture, let AI auto-mark attendance, and get real-time analytics for smarter tracking!
         </p>
       </div>
 

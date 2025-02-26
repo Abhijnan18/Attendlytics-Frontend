@@ -1,12 +1,16 @@
 "use client";
 import { SparklesCore } from "./ui/sparkles";
+import { WordRotate } from "./magicui/word-rotate";
 
 export function Hero() {
   return (
     <div className="h-[40rem] w-full bg-[#050505] flex flex-col items-center justify-center overflow-hidden rounded-md mt-20 md:mt-48">
-      <h1 className="md:text-7xl text-6xl lg:text-[150px] font-bold tracking-wide leading-tight text-center py-4 bg-clip-text relative z-20">
-        Attendify
-      </h1>
+
+      <WordRotate
+        className="text-7xl lg:text-[200px] font-bold tracking-noraml leading-tight text-center py-4 bg-clip-text relative z-20"
+        words={["Attendify", "Attendance", "Simplified"]}
+      />
+
       <div className="w-[40rem] h-40 relative">
         {/* Gradients */}
         <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm" />
