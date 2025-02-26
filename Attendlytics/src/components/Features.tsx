@@ -2,7 +2,7 @@ import React from "react";
 import { cn } from "@/lib/utils";
 import createGlobe from "cobe";
 import { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import { IconBrandYoutubeFilled } from "@tabler/icons-react";
 import { Cover } from "@/components/ui/cover";
 
@@ -11,16 +11,16 @@ export function Features() {
   const features = [
 
     {
-      title: "Capture pictures with AI",
+      title: "Instant Attendance",
       description:
-        "Capture stunning photos effortlessly using our advanced AI technology.",
+        "Capture attendance through AI-powered image recognition of classroom photos.",
       skeleton: <SkeletonTwo />,
       className: "border-b col-span-1 lg:col-span-2 lg:border-r border-neutral-800",
     },
     {
-      title: "Track issues effectively",
+      title: "Smart Analytics",
       description:
-        "Track and manage your project issues with ease using our intuitive interface.",
+        "Track attendance patterns, generate reports, and identify trends over time.",
       skeleton: <SkeletonOne />,
       className:
         "col-span-1 lg:col-span-4 border-b  border-neutral-800",
@@ -28,24 +28,24 @@ export function Features() {
     {
       title: "Watch our AI on YouTube",
       description:
-        "Whether its you or Tyler Durden, you can get to know about our product on YouTube",
+        "Whether its snapping attendance or keeping track of it, our AI can do it.",
       skeleton: <SkeletonThree />,
       className:
         "col-span-1 lg:col-span-3 lg:border-r border-neutral-800",
     },
     {
-      title: "Deploy in seconds",
+      title: "Real-time Updates",
       description:
-        "With our blazing fast, state of the art, cutting edge, we are so back cloud servies (read AWS) - you can deploy your model in seconds.",
+        "Instant sync and real-time updates across all devices with secure cloud storage.",
       skeleton: <SkeletonFour />,
       className: "col-span-1 lg:col-span-3 border-b lg:border-none",
     },
   ];
   return (
-    <div className="relative z-20 py-10 pt-0 lg:py-40 lg:pt-0 max-w-6xl mx-auto">
+    <div className="relative z-20 py-10 pt-0 lg:py-28 lg:pt-0 max-w-6xl mx-auto">
       <div className="px-8">
         <h4 className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-white">
-          Packed with features to <br />roll attendance <Cover>warp speed</Cover>
+          AI packed with features to <br />roll attendance in <Cover>warp speed</Cover>
         </h4>
 
         <p className="text-sm lg:text-base  max-w-2xl  my-4 mx-auto text-center font-normal text-neutral-300">
@@ -111,7 +111,7 @@ export const SkeletonOne = () => {
         <div className="flex flex-1 w-full h-full flex-col space-y-2  ">
           {/* TODO */}
           <img
-            src="/linear.webp"
+            src="images/analytics_image.png"
             alt="header"
             width={800}
             height={800}
@@ -129,7 +129,7 @@ export const SkeletonOne = () => {
 export const SkeletonThree = () => {
   return (
     <a
-      href="https://www.youtube.com/watch?v=RPa3_AD1_Vs"
+      href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
       target="__blank"
       className="relative flex gap-10  h-full group/image"
     >
@@ -151,72 +151,11 @@ export const SkeletonThree = () => {
 };
 
 export const SkeletonTwo = () => {
-  const images = [
-    "https://images.unsplash.com/photo-1517322048670-4fba75cbbb62?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1573790387438-4da905039392?q=80&w=3425&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1555400038-63f5ba517a47?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1554931670-4ebfabf6e7a9?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "https://images.unsplash.com/photo-1546484475-7f7bd55792da?q=80&w=2581&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  ];
-
-  const imageVariants = {
-    whileHover: {
-      scale: 1.1,
-      rotate: 0,
-      zIndex: 100,
-    },
-    whileTap: {
-      scale: 1.1,
-      rotate: 0,
-      zIndex: 100,
-    },
-  };
   return (
-    <div className="relative flex flex-col items-start p-8 gap-10 h-full overflow-hidden">
+    <div className="relative flex flex-col justify-center items-center p-20 h-full overflow-hidden">
       {/* TODO */}
-      <div className="flex flex-row -ml-20">
-        {images.map((image, idx) => (
-          <motion.div
-            variants={imageVariants}
-            key={"images-first" + idx}
-            style={{
-              rotate: Math.random() * 20 - 10,
-            }}
-            whileHover="whileHover"
-            whileTap="whileTap"
-            className="rounded-xl -mr-4 mt-4 p-1 bg-neutral-800 border-neutral-700 border flex-shrink-0 overflow-hidden"
-          >
-            <img
-              src={image}
-              alt="bali images"
-              width="500"
-              height="500"
-              className="rounded-lg h-20 w-20 md:h-40 md:w-40 object-cover flex-shrink-0"
-            />
-          </motion.div>
-        ))}
-      </div>
-      <div className="flex flex-row">
-        {images.map((image, idx) => (
-          <motion.div
-            key={"images-second" + idx}
-            style={{
-              rotate: Math.random() * 20 - 10,
-            }}
-            variants={imageVariants}
-            whileHover="whileHover"
-            whileTap="whileTap"
-            className="rounded-xl -mr-4 mt-4 p-1 bg-neutral-800 border-neutral-700 border flex-shrink-0 overflow-hidden"
-          >
-            <img
-              src={image}
-              alt="bali images"
-              width="500"
-              height="500"
-              className="rounded-lg h-20 w-20 md:h-40 md:w-40 object-cover flex-shrink-0"
-            />
-          </motion.div>
-        ))}
+      <div className="flex justify-center items-center">
+        <svg className="h-60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M7 3H5C3.89543 3 3 3.89543 3 5V7" stroke="#ffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M17 3H19C20.1046 3 21 3.89543 21 5V7" stroke="#ffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M16 8L16 10" stroke="#ffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M8 8L8 10" stroke="#ffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M9 16C9 16 10 17 12 17C14 17 15 16 15 16" stroke="#ffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M12 8L12 13L11 13" stroke="#ffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M7 21H5C3.89543 21 3 20.1046 3 19V17" stroke="#ffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M17 21H19C20.1046 21 21 20.1046 21 19V17" stroke="#ffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
       </div>
 
       <div className="absolute left-0 z-[100] inset-y-0 w-20 bg-gradient-to-r from-black to-transparent  h-full pointer-events-none" />

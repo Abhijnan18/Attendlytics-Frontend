@@ -5,6 +5,7 @@ import { Hero } from "./components/Hero";
 import { ProblemStatement } from "./components/ProblemStatement";
 import { ProblemSolution } from "./components/ProblemSolution";
 import { Features } from "./components/Features";
+import { CTA } from "./components/CTA";
 import Footer from "./components/Footer";
 
 const App: React.FC = () => {
@@ -21,6 +22,7 @@ const App: React.FC = () => {
         <ProblemStatement />
         <ProblemSolution />
         <Features />
+        <CTA />
         <Footer />
       </motion.div>
     </>
