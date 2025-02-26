@@ -11,18 +11,16 @@ export function Navbar({ className }: { className?: string }) {
     <nav>
 
       <div
-        className={cn(" hidden md:block fixed top-10 inset-x-0 max-w-xs mx-auto z-50", className)}
+        className={cn(" hidden md:block fixed top-10 inset-x-0 max-w-sm mx-auto z-50", className)}
       >
         <Menu setActive={setActive}>
-          <MenuItem setActive={setActive} active={active} item="Services">
+          <MenuItem setActive={setActive} active={active} item="About">
             <div className="flex flex-col space-y-4 text-sm">
-              <HoveredLink href="/web-dev">Web Development</HoveredLink>
-              <HoveredLink href="/interface-design">Interface Design</HoveredLink>
-              <HoveredLink href="/seo">Search Engine Optimization</HoveredLink>
-              <HoveredLink href="/branding">Branding</HoveredLink>
+              <HoveredLink href="/web-dev">Project</HoveredLink>
+              <HoveredLink href="/interface-design">Developers</HoveredLink>
             </div>
           </MenuItem>
-          <MenuItem setActive={setActive} active={active} item="Products">
+          <MenuItem setActive={setActive} active={active} item="Services">
             <div className="  text-sm grid grid-cols-2 gap-10 p-4">
               <ProductItem
                 title="Algochurn"
@@ -52,10 +50,17 @@ export function Navbar({ className }: { className?: string }) {
           </MenuItem>
           <MenuItem setActive={setActive} active={active} item="Pricing">
             <div className="flex flex-col space-y-4 text-sm">
-              <HoveredLink href="/hobby">Hobby</HoveredLink>
-              <HoveredLink href="/individual">Individual</HoveredLink>
-              <HoveredLink href="/team">Team</HoveredLink>
-              <HoveredLink href="/enterprise">Enterprise</HoveredLink>
+              <HoveredLink href="/hobby">School</HoveredLink>
+              <HoveredLink href="/individual">College</HoveredLink>
+              <HoveredLink href="/team">University</HoveredLink>
+            </div>
+          </MenuItem>
+          <MenuItem setActive={setActive} active={active} item="Log In">
+            <div className="flex flex-col space-y-4 text-sm">
+              <HoveredLink href="/Admin">Admin</HoveredLink>
+              <HoveredLink href="/HOD">HOD</HoveredLink>
+              <HoveredLink href="/Teacher">Teacher</HoveredLink>
+              <HoveredLink href="/Student">Student</HoveredLink>
             </div>
           </MenuItem>
         </Menu>
@@ -160,99 +165,16 @@ export function Navbar({ className }: { className?: string }) {
                   <li>
                     <a
                       href="#"
-                      className="block pl-0 py-[1rem] px-3 text-[1.75rem] font-normal leading-6 md:font-light md:text-base text-white md:text-gray-400 md:hover:text-white rounded hover:bg-gray-900 md:hover:bg-transparent md:p-0"
+                      className="block pl-0 py-[1rem] px-3 text-[1.75rem] border-t-2 border-neutral-800 font-normal leading-6 md:font-light md:text-base text-white md:text-gray-400 md:hover:text-white rounded hover:bg-gray-900 md:hover:bg-transparent md:p-0"
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      Contact
+                      Log In
                     </a>
                   </li>
                 </ul>
               </motion.div>
             )}
           </AnimatePresence>
-
-          <ul className="hidden md:flex md:flex-row md:space-x-8 md:mt-0">
-            <li>
-              <motion.a
-                href="#"
-                className="block pl-0 py-[1rem] px-3 text-[1.75rem] font-medium leading-6 md:font-normal md:tracking-tight md:text-base text-white md:text-gray-400 md:hover:text-white rounded hover:bg-gray-900 md:hover:bg-transparent md:p-0"
-                onClick={() => setIsMenuOpen(false)}
-                whileHover="hover"
-                initial="rest"
-                animate="rest"
-              >
-                About
-                <motion.span
-                  variants={{
-                    rest: { scaleX: 0 },
-                    hover: { scaleX: 1 },
-                  }}
-                  transition={{ duration: 0.3 }}
-                  className="block h-0.5 bg-white origin-left mt-1"
-                />
-              </motion.a>
-            </li>
-            <li>
-              <motion.a
-                href="#"
-                className="block pl-0 py-[1rem] px-3 text-[1.75rem] font-normal leading-6 md:font-normal md:tracking-tight md:text-base text-white md:text-gray-400 md:hover:text-white rounded hover:bg-gray-900 md:hover:bg-transparent md:p-0"
-                onClick={() => setIsMenuOpen(false)}
-                whileHover="hover"
-                initial="rest"
-                animate="rest"
-              >
-                Services
-                <motion.span
-                  variants={{
-                    rest: { scaleX: 0 },
-                    hover: { scaleX: 1 },
-                  }}
-                  transition={{ duration: 0.3 }}
-                  className="block h-0.5 bg-white origin-left mt-1"
-                />
-              </motion.a>
-            </li>
-            <li>
-              <motion.a
-                href="#"
-                className="block pl-0 py-[1rem] px-3 text-[1.75rem] font-normal leading-6 md:font-normal md:tracking-tight md:text-base text-white md:text-gray-400 md:hover:text-white rounded hover:bg-gray-900 md:hover:bg-transparent md:p-0"
-                onClick={() => setIsMenuOpen(false)}
-                whileHover="hover"
-                initial="rest"
-                animate="rest"
-              >
-                Pricing
-                <motion.span
-                  variants={{
-                    rest: { scaleX: 0 },
-                    hover: { scaleX: 1 },
-                  }}
-                  transition={{ duration: 0.3 }}
-                  className="block h-0.5 bg-white origin-left mt-1"
-                />
-              </motion.a>
-            </li>
-            <li>
-              <motion.a
-                href="#"
-                className="block pl-0 py-[1rem] px-3 text-[1.75rem] font-normal leading-6 md:font-normal md:tracking-tight md:text-base text-white md:text-gray-400 md:hover:text-white rounded hover:bg-gray-900 md:hover:bg-transparent md:p-0"
-                onClick={() => setIsMenuOpen(false)}
-                whileHover="hover"
-                initial="rest"
-                animate="rest"
-              >
-                Contact
-                <motion.span
-                  variants={{
-                    rest: { scaleX: 0 },
-                    hover: { scaleX: 1 },
-                  }}
-                  transition={{ duration: 0.3 }}
-                  className="block h-0.5 bg-white origin-left mt-1"
-                />
-              </motion.a>
-            </li>
-          </ul>
         </div>
       </div>
     </nav>

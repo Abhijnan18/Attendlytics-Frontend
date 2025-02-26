@@ -20,7 +20,7 @@ export function CTA() {
                     <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 transition duration-200 rounded-lg text-white shadow-[0px_2px_0px_0px_#FFFFFF40_inset]">
                         Book Demo
                     </button>
-                    <button className="px-4 py-2  text-white ">Log In</button>
+                    <button className="px-4 py-2 bg-transparent border-gray-400 border-2 hover:bg-neutral-800 transition duration-200 rounded-full text-white">Log in</button>
                 </div>
             </Vortex>
         </div>

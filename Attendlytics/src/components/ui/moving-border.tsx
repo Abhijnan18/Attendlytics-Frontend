@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useRef } from "react";
 import {
   motion,
   useAnimationFrame,
@@ -7,16 +7,15 @@ import {
   useMotionValue,
   useTransform,
 } from "framer-motion";
-import { useRef } from "react";
 import { cn } from "@/lib/utils";
 
 export function Button({
-  borderRadius = "1.75rem",
+  borderRadius = "0.5rem",
   children,
   as: Component = "button",
   containerClassName,
   borderClassName,
-  duration,
+  duration = 2000,
   className,
   ...otherProps
 }: {
@@ -32,36 +31,28 @@ export function Button({
   return (
     <Component
       className={cn(
-        "bg-transparent relative text-xl  h-16 w-40 p-[1px] overflow-hidden ",
+        "bg-transparent relative inline-block p-[1px] overflow-hidden",
         containerClassName
       )}
-      style={{
-        borderRadius: borderRadius,
-      }}
+      style={{ borderRadius }}
       {...otherProps}
     >
-      <div
-        className="absolute inset-0"
-        style={{ borderRadius: `calc(${borderRadius} * 0.96)` }}
-      >
-        <MovingBorder duration={duration} rx="30%" ry="30%">
+      <div className="absolute inset-0" style={{ borderRadius }}>
+        <MovingBorder duration={duration} rx={borderRadius} ry={borderRadius}>
           <div
             className={cn(
-              "h-20 w-20 opacity-[0.8] bg-[radial-gradient(var(--sky-500)_40%,transparent_60%)]",
+              "h-3 w-3 opacity-[0.8] bg-[radial-gradient(var(--sky-500)_40%,transparent_60%)]",
               borderClassName
             )}
           />
         </MovingBorder>
       </div>
-
       <div
         className={cn(
-          "relative bg-slate-900/[0.8] border border-slate-800 backdrop-blur-xl text-white flex items-center justify-center w-full h-full text-sm antialiased",
+          "relative bg-blue-600 hover:bg-blue-700 transition duration-200 text-white flex items-center justify-center text-sm antialiased px-4 py-2 shadow-[0px_2px_0px_0px_#FFFFFF40_inset]",
           className
         )}
-        style={{
-          borderRadius: `calc(${borderRadius} * 0.96)`,
-        }}
+        style={{ borderRadius }}
       >
         {children}
       </div>
@@ -83,7 +74,7 @@ export const MovingBorder = ({
   [key: string]: any;
 }) => {
   const pathRef = useRef<SVGRectElement | null>(null);
-  const progress = useMotionValue<number>(0);
+  const progress = useMotionValue(0);
 
   useAnimationFrame((time) => {
     const length = pathRef.current?.getTotalLength();
@@ -93,13 +84,11 @@ export const MovingBorder = ({
     }
   });
 
-  const x = useTransform(
-    progress,
-    (val) => pathRef.current?.getPointAtLength(val).x
+  const x = useTransform(progress, (val) =>
+    pathRef.current?.getPointAtLength(val).x
   );
-  const y = useTransform(
-    progress,
-    (val) => pathRef.current?.getPointAtLength(val).y
+  const y = useTransform(progress, (val) =>
+    pathRef.current?.getPointAtLength(val).y
   );
 
   const transform = useMotionTemplate`translateX(${x}px) translateY(${y}px) translateX(-50%) translateY(-50%)`;
@@ -114,14 +103,7 @@ export const MovingBorder = ({
         height="100%"
         {...otherProps}
       >
-        <rect
-          fill="none"
-          width="100%"
-          height="100%"
-          rx={rx}
-          ry={ry}
-          ref={pathRef}
-        />
+        <rect fill="none" width="100%" height="100%" rx={rx} ry={ry} ref={pathRef} />
       </svg>
       <motion.div
         style={{
