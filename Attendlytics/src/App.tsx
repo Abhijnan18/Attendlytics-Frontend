@@ -4,7 +4,7 @@ import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
 import { ProblemStatement } from "./components/ProblemStatement";
 import { ProblemSolution } from "./components/ProblemSolution";
-{/*import { Features } from "./components/Features";*/ }
+import { Features } from "./components/Features";
 import Footer from "./components/Footer";
 
 const App: React.FC = () => {
@@ -20,7 +20,7 @@ const App: React.FC = () => {
         <Hero />
         <ProblemStatement />
         <ProblemSolution />
-        {/*<Features />*/}
+        <Features />
         <Footer />
       </motion.div>
     </>

@@ -1,8 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
 import { LampContainer } from "./ui/lamp";
-import { Button } from "./ui/moving-border";
-import { Cover } from "@/components/ui/cover";
+// import { Button } from "./ui/moving-border";
+// import { Cover } from "@/components/ui/cover";
 
 export function ProblemSolution() {
     return (
@@ -22,7 +22,7 @@ export function ProblemSolution() {
                     <br />
                     Attendify
                 </div>
-
+                {/* 
                 <div>
                     <h1 className="text-4xl md:text-4xl lg:text-5xl mt-6 font-medium max-w-7xl mx-auto text-center relative z-20 py-6 bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 via-white to-white">
                         Roll Attendance in <Cover>warp speed</Cover>
@@ -36,13 +36,8 @@ export function ProblemSolution() {
                     >
                         Try demo
                     </Button>
-                </div>
-
-
-
-
+                </div> */}
             </motion.h1>
-
         </LampContainer>
     );
 }
