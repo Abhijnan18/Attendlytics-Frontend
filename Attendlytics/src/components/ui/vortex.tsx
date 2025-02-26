@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { createNoise3D } from "simplex-noise";
 import { motion } from "framer-motion";
 
@@ -46,9 +46,9 @@ export const Vortex = (props: VortexProps) => {
   // Slowdown factor to reduce movement speed.
   const slowdownFactor = 0.5;
 
-  const HALF_PI: number = 0.5 * Math.PI;
+  // const HALF_PI: number = 0.5 * Math.PI;
   const TAU: number = 2 * Math.PI;
-  const TO_RAD: number = Math.PI / 180;
+  // const TO_RAD: number = Math.PI / 180;
   const rand = (n: number): number => n * Math.random();
   const randRange = (n: number): number => n - rand(2 * n);
   const fadeInOut = (t: number, m: number): number => {
@@ -156,7 +156,7 @@ export const Vortex = (props: VortexProps) => {
     life: number,
     ttl: number,
     radius: number,
-    hue: number,
+    _hue: number,
     ctx: CanvasRenderingContext2D
   ) => {
     ctx.save();
@@ -182,7 +182,7 @@ export const Vortex = (props: VortexProps) => {
 
   const resize = (
     canvas: HTMLCanvasElement,
-    ctx?: CanvasRenderingContext2D
+    _ctx?: CanvasRenderingContext2D
   ) => {
     const { innerWidth, innerHeight } = window;
     canvas.width = innerWidth;
