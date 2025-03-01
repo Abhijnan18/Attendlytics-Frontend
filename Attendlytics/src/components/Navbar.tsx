@@ -6,10 +6,10 @@ import { cn } from "@/lib/utils";
 export function Navbar({ className }: { className?: string }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [active, setActive] = useState<string | null>(null);
+  const [isLogInDropdownOpen, setIsLogInDropdownOpen] = useState(false);
 
   return (
     <nav>
-
       <div
         className={cn(" hidden md:block fixed top-10 inset-x-0 max-w-sm mx-auto z-50", className)}
       >
@@ -21,7 +21,7 @@ export function Navbar({ className }: { className?: string }) {
             </div>
           </MenuItem>
           <MenuItem setActive={setActive} active={active} item="Services">
-            <div className="  text-sm grid grid-cols-2 gap-10 p-4">
+            <div className="text-sm grid grid-cols-2 gap-10 p-4">
               <ProductItem
                 title="Algochurn"
                 href="https://algochurn.com"
@@ -66,9 +66,7 @@ export function Navbar({ className }: { className?: string }) {
         </Menu>
       </div>
 
-
-
-      {/* <div className="bg-gradient-to-br from-[#050505] to-[rgba(5,5,5,0.9)] fixed w-full top-0 left-0 z-50"></div> */}
+      {/* Mobile Navbar */}
       <div className="md:hidden max-w-screen-xl flex flex-wrap items-center justify-start mx-auto p-6">
         <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
           <span className="text-2xl text-gray-100">
@@ -84,8 +82,8 @@ export function Navbar({ className }: { className?: string }) {
               stroke="#ffff"
               className="h-10"
             >
-              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+              <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
               <g id="SVGRepo_iconCarrier">
                 <g>
                   <path d="M1151.998,921.75c-4.129,0-8.17-0.771-12.01-2.292l-50.167-19.888c0,11.08,0,27.65,0,32.066 c0,15.562,27.836,28.174,62.178,28.174s62.181-12.612,62.181-28.174v-32.067l-50.172,19.889 C1160.168,920.979,1156.127,921.75,1151.998,921.75z"></path>
@@ -137,9 +135,8 @@ export function Navbar({ className }: { className?: string }) {
                 <ul className="flex flex-col font-medium p-6 mt-0">
                   <li>
                     <a
-                      href="#"
+                      href="/"
                       className="block pl-0 py-[1rem] px-3 text-[1.75rem] font-normal leading-6 md:font-light md:text-base text-white md:text-gray-400 md:hover:text-white rounded hover:bg-gray-900 md:hover:bg-transparent md:p-0"
-                      onClick={() => setIsMenuOpen(false)}
                     >
                       About
                     </a>
@@ -163,13 +160,60 @@ export function Navbar({ className }: { className?: string }) {
                     </a>
                   </li>
                   <li>
-                    <a
-                      href="#"
-                      className="block pl-0 py-[1rem] px-3 text-[1.75rem] border-t-2 border-neutral-800 font-normal leading-6 md:font-light md:text-base text-white md:text-gray-400 md:hover:text-white rounded hover:bg-gray-900 md:hover:bg-transparent md:p-0"
-                      onClick={() => setIsMenuOpen(false)}
+                    <button
+                      onClick={() => setIsLogInDropdownOpen(!isLogInDropdownOpen)}
+                      className="w-full text-left block pl-0 py-[1rem] px-3 text-[1.75rem] font-normal leading-6 text-white hover:bg-gray-900 rounded border-t border-neutral-700"
                     >
                       Log In
-                    </a>
+                    </button>
+                    <AnimatePresence>
+                      {isLogInDropdownOpen && (
+                        <motion.ul
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="pl-4 mt-2 flex flex-col space-y-2 text-sm"
+                        >
+                          <li>
+                            <a
+                              href="/login/Admin"
+                              className="block pl-0 py-[0.5rem] px-3 text-[1.25rem] font-normal leading-6 text-white hover:underline"
+                              onClick={() => setIsMenuOpen(false)}
+                            >
+                              Admin
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="/login/HOD"
+                              className="block pl-0 py-[0.5rem] px-3 text-[1.25rem] font-normal leading-6 text-white hover:underline"
+                              onClick={() => setIsMenuOpen(false)}
+                            >
+                              HOD
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="/login/Teacher"
+                              className="block pl-0 py-[0.5rem] px-3 text-[1.25rem] font-normal leading-6 text-white hover:underline"
+                              onClick={() => setIsMenuOpen(false)}
+                            >
+                              Teacher
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="/login/Student"
+                              className="block pl-0 py-[0.5rem] px-3 text-[1.25rem] font-normal leading-6 text-white hover:underline"
+                              onClick={() => setIsMenuOpen(false)}
+                            >
+                              Student
+                            </a>
+                          </li>
+                        </motion.ul>
+                      )}
+                    </AnimatePresence>
                   </li>
                 </ul>
               </motion.div>
