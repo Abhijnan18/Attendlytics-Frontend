@@ -1,31 +1,22 @@
+// src/App.tsx
 import React from "react";
-import { motion } from "framer-motion";
-import { Navbar } from "./components/Navbar";
-import { Hero } from "./components/Hero";
-import { ProblemStatement } from "./components/ProblemStatement";
-import { ProblemSolution } from "./components/ProblemSolution";
-import { Features } from "./components/Features";
-import { CTA } from "./components/CTA";
-import Footer from "./components/Footer";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Layout from "./layout/Layout";
+import HomePage from "./pages/HomePage"; // Create this file to house your home/landing page content
+import LoginPage from "./pages/LoginPage"; // Login page for different roles
 
 const App: React.FC = () => {
   return (
-    <>
-      <Navbar />
-      <motion.div
-        initial={{ opacity: 0, scale: 0.98 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
-        className="min-h-screen"
-      >
-        <Hero />
-        <ProblemStatement />
-        <ProblemSolution />
-        <Features />
-        <CTA />
-        <Footer />
-      </motion.div>
-    </>
+    <Router>
+      <Routes>
+        {/* Layout wrapping all pages */}
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="login/:role" element={<LoginPage />} />
+        </Route>
+      </Routes>
+
+    </Router>
   );
 };
 

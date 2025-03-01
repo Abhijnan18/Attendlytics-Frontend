@@ -16,7 +16,7 @@ export function Navbar({ className }: { className?: string }) {
         <Menu setActive={setActive}>
           <MenuItem setActive={setActive} active={active} item="About">
             <div className="flex flex-col space-y-4 text-sm">
-              <HoveredLink href="/web-dev">Project</HoveredLink>
+              <HoveredLink href="/">Project</HoveredLink>
               <HoveredLink href="/interface-design">Developers</HoveredLink>
             </div>
           </MenuItem>
@@ -57,10 +57,10 @@ export function Navbar({ className }: { className?: string }) {
           </MenuItem>
           <MenuItem setActive={setActive} active={active} item="Log In">
             <div className="flex flex-col space-y-4 text-sm">
-              <HoveredLink href="/Admin">Admin</HoveredLink>
-              <HoveredLink href="/HOD">HOD</HoveredLink>
-              <HoveredLink href="/Teacher">Teacher</HoveredLink>
-              <HoveredLink href="/Student">Student</HoveredLink>
+              <HoveredLink href="/login/Admin">Admin</HoveredLink>
+              <HoveredLink href="/login/HOD">HOD</HoveredLink>
+              <HoveredLink href="/login/Teacher">Teacher</HoveredLink>
+              <HoveredLink href="/login/Student">Student</HoveredLink>
             </div>
           </MenuItem>
         </Menu>
