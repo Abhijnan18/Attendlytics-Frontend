@@ -1,3 +1,4 @@
+// src/layout/DashboardLayout.tsx
 import { AppSidebar } from "@/components/app-sidebar"
 import {
     Breadcrumb,
@@ -15,9 +16,42 @@ import {
 } from "@/components/ui/sidebar"
 import { ThemeProvider } from "@/components/theme-provider"
 import { ModeToggle } from "../components/DarkModeButton";
-import { Outlet } from "react-router-dom"; // Outlet is used for nested routing
+import { Outlet, useParams } from "react-router-dom";
 
 export default function DashboardLayout() {
+    // Get route parameters from the URL
+    const { year, page } = useParams();
+
+    // Map numeric year to full text
+    const getYearText = (year: string | undefined) => {
+        switch (year) {
+            case "1":
+                return "1st Year";
+            case "2":
+                return "2nd Year";
+            case "3":
+                return "3rd Year";
+            case "4":
+                return "4th Year";
+            default:
+                return "";
+        }
+    };
+
+    // Map the page type to a proper title
+    const getPageText = (page: string | undefined) => {
+        switch (page) {
+            case "semester":
+                return "Semester Analytics";
+            case "class":
+                return "Class Analytics";
+            case "subject":
+                return "Subject Analytics";
+            default:
+                return "";
+        }
+    };
+
     return (
         <ThemeProvider
             attribute="class"
@@ -35,14 +69,30 @@ export default function DashboardLayout() {
                             <Breadcrumb>
                                 <BreadcrumbList>
                                     <BreadcrumbItem className="hidden md:block">
-                                        <BreadcrumbLink href="#">
-                                            Building Your Application
+                                        <BreadcrumbLink href="/dashboard">
+                                            Dashboard
                                         </BreadcrumbLink>
                                     </BreadcrumbItem>
-                                    <BreadcrumbSeparator className="hidden md:block" />
-                                    <BreadcrumbItem>
-                                        <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-                                    </BreadcrumbItem>
+                                    {year && (
+                                        <>
+                                            <BreadcrumbSeparator className="hidden md:block" />
+                                            <BreadcrumbItem className="hidden md:block">
+                                                <BreadcrumbLink href={`/dashboard/${year}`}>
+                                                    {getYearText(year)}
+                                                </BreadcrumbLink>
+                                            </BreadcrumbItem>
+                                        </>
+                                    )}
+                                    {page && (
+                                        <>
+                                            <BreadcrumbSeparator className="hidden md:block" />
+                                            <BreadcrumbItem>
+                                                <BreadcrumbPage>
+                                                    {getPageText(page)}
+                                                </BreadcrumbPage>
+                                            </BreadcrumbItem>
+                                        </>
+                                    )}
                                 </BreadcrumbList>
                             </Breadcrumb>
                         </div>

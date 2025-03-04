@@ -1,3 +1,4 @@
+// src/components/app-sidebar.tsx
 "use client"
 
 import * as React from "react"
@@ -26,7 +27,7 @@ import {
     SidebarRail,
 } from "@/components/ui/sidebar"
 
-// This is sample data.
+// Updated sample data with correct URLs
 const data = {
     user: {
         name: "shadcn",
@@ -57,18 +58,9 @@ const data = {
             icon: SquareTerminal,
             isActive: true,
             items: [
-                {
-                    title: "Semester",
-                    url: "#",
-                },
-                {
-                    title: "Class",
-                    url: "#",
-                },
-                {
-                    title: "Subject",
-                    url: "#",
-                },
+                { title: "Semester", url: "/dashboard/1/semester" },
+                { title: "Class", url: "/dashboard/1/class" },
+                { title: "Subject", url: "/dashboard/1/subject" },
             ],
         },
         {
@@ -76,18 +68,9 @@ const data = {
             url: "#",
             icon: Bot,
             items: [
-                {
-                    title: "Semester",
-                    url: "#",
-                },
-                {
-                    title: "Class",
-                    url: "#",
-                },
-                {
-                    title: "Subject",
-                    url: "#",
-                },
+                { title: "Semester", url: "/dashboard/2/semester" },
+                { title: "Class", url: "/dashboard/2/class" },
+                { title: "Subject", url: "/dashboard/2/subject" },
             ],
         },
         {
@@ -95,18 +78,9 @@ const data = {
             url: "#",
             icon: BookOpen,
             items: [
-                {
-                    title: "Semester",
-                    url: "#",
-                },
-                {
-                    title: "Class",
-                    url: "#",
-                },
-                {
-                    title: "Subject",
-                    url: "#",
-                },
+                { title: "Semester", url: "/dashboard/3/semester" },
+                { title: "Class", url: "/dashboard/3/class" },
+                { title: "Subject", url: "/dashboard/3/subject" },
             ],
         },
         {
@@ -114,18 +88,9 @@ const data = {
             url: "#",
             icon: Settings2,
             items: [
-                {
-                    title: "Semester",
-                    url: "#",
-                },
-                {
-                    title: "Class",
-                    url: "#",
-                },
-                {
-                    title: "Subject",
-                    url: "#",
-                },
+                { title: "Semester", url: "/dashboard/4/semester" },
+                { title: "Class", url: "/dashboard/4/class" },
+                { title: "Subject", url: "/dashboard/4/subject" },
             ],
         },
     ],
