@@ -52,27 +52,27 @@ const data = {
     ],
     navMain: [
         {
-            title: "Playground",
+            title: "1st Year",
             url: "#",
             icon: SquareTerminal,
             isActive: true,
             items: [
                 {
-                    title: "History",
+                    title: "Semester",
                     url: "#",
                 },
                 {
-                    title: "Starred",
+                    title: "Class",
                     url: "#",
                 },
                 {
-                    title: "Settings",
+                    title: "Subject",
                     url: "#",
                 },
             ],
         },
         {
-            title: "Models",
+            title: "2nd Year",
             url: "#",
             icon: Bot,
             items: [
@@ -91,7 +91,7 @@ const data = {
             ],
         },
         {
-            title: "Documentation",
+            title: "3rd Year",
             url: "#",
             icon: BookOpen,
             items: [
@@ -114,7 +114,7 @@ const data = {
             ],
         },
         {
-            title: "Settings",
+            title: "4th Year",
             url: "#",
             icon: Settings2,
             items: [
