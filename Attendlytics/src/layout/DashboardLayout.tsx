@@ -1,28 +1,32 @@
 // src/layout/DashboardLayout.tsx
-import { AppSidebar } from "@/components/app-sidebar"
+import { AppSidebar } from "@/components/app-sidebar";
 import {
     Breadcrumb,
     BreadcrumbItem,
-    BreadcrumbLink,
-    BreadcrumbList,
     BreadcrumbPage,
+    BreadcrumbList,
     BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
-import { Separator } from "@/components/ui/separator"
+} from "@/components/ui/breadcrumb";
+import { Separator } from "@/components/ui/separator";
 import {
     SidebarInset,
     SidebarProvider,
     SidebarTrigger,
-} from "@/components/ui/sidebar"
-import { ThemeProvider } from "@/components/theme-provider"
+} from "@/components/ui/sidebar";
+import { ThemeProvider } from "@/components/theme-provider";
 import { ModeToggle } from "../components/DarkModeButton";
-import { Outlet, useParams } from "react-router-dom";
+import { Outlet, useParams, useLocation } from "react-router-dom";
 
 export default function DashboardLayout() {
-    // Get route parameters from the URL
-    const { year, page } = useParams();
+    const { year } = useParams();
+    const location = useLocation();
 
-    // Map numeric year to full text
+    // Extract the analytics type from the URL path.
+    // Expecting a path like: /dashboard/1/semester, /dashboard/2/class, etc.
+    const segments = location.pathname.split("/").filter(Boolean);
+    const page = segments.length >= 3 ? segments[2] : "";
+
+    // Map numeric year to full text.
     const getYearText = (year: string | undefined) => {
         switch (year) {
             case "1":
@@ -38,7 +42,7 @@ export default function DashboardLayout() {
         }
     };
 
-    // Map the page type to a proper title
+    // Map the page type to a proper title.
     const getPageText = (page: string | undefined) => {
         switch (page) {
             case "semester":
@@ -68,28 +72,16 @@ export default function DashboardLayout() {
                             <Separator orientation="vertical" className="mr-2 h-4" />
                             <Breadcrumb>
                                 <BreadcrumbList>
-                                    <BreadcrumbItem className="hidden md:block">
-                                        <BreadcrumbLink href="/dashboard">
-                                            Dashboard
-                                        </BreadcrumbLink>
-                                    </BreadcrumbItem>
                                     {year && (
-                                        <>
-                                            <BreadcrumbSeparator className="hidden md:block" />
-                                            <BreadcrumbItem className="hidden md:block">
-                                                <BreadcrumbLink href={`/dashboard/${year}`}>
-                                                    {getYearText(year)}
-                                                </BreadcrumbLink>
-                                            </BreadcrumbItem>
-                                        </>
+                                        <BreadcrumbItem>
+                                            <BreadcrumbPage>{getYearText(year)}</BreadcrumbPage>
+                                        </BreadcrumbItem>
                                     )}
                                     {page && (
                                         <>
                                             <BreadcrumbSeparator className="hidden md:block" />
                                             <BreadcrumbItem>
-                                                <BreadcrumbPage>
-                                                    {getPageText(page)}
-                                                </BreadcrumbPage>
+                                                <BreadcrumbPage>{getPageText(page)}</BreadcrumbPage>
                                             </BreadcrumbItem>
                                         </>
                                     )}
@@ -106,5 +98,5 @@ export default function DashboardLayout() {
                 </SidebarInset>
             </SidebarProvider>
         </ThemeProvider>
-    )
+    );
 }

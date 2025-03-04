@@ -1,22 +1,15 @@
-// src/components/app-sidebar.tsx
 "use client"
 
 import * as React from "react"
 import {
-    AudioWaveform,
+    School,
     BookOpen,
-    Bot,
-    Command,
-    Frame,
-    GalleryVerticalEnd,
-    Map,
+    Library,
+    GraduationCap,
     PieChart,
-    Settings2,
-    SquareTerminal,
 } from "lucide-react"
 
 import { NavMain } from "@/components/nav-main"
-import { NavProjects } from "@/components/nav-projects"
 import { NavUser } from "@/components/nav-user"
 import { TeamSwitcher } from "@/components/team-switcher"
 import {
@@ -27,35 +20,25 @@ import {
     SidebarRail,
 } from "@/components/ui/sidebar"
 
-// Updated sample data with correct URLs
+// Updated sample data with academic-themed icons
 const data = {
     user: {
-        name: "shadcn",
+        name: "HOD CSE",
         email: "m@example.com",
         avatar: "/avatars/shadcn.jpg",
     },
     teams: [
         {
-            name: "Acme Inc",
-            logo: GalleryVerticalEnd,
-            plan: "Enterprise",
-        },
-        {
-            name: "Acme Corp.",
-            logo: AudioWaveform,
-            plan: "Startup",
-        },
-        {
-            name: "Evil Corp.",
-            logo: Command,
-            plan: "Free",
+            name: "Attendify",
+            logo: PieChart,
+            plan: "",
         },
     ],
     navMain: [
         {
             title: "1st Year",
             url: "#",
-            icon: SquareTerminal,
+            icon: School,
             isActive: true,
             items: [
                 { title: "Semester", url: "/dashboard/1/semester" },
@@ -66,7 +49,8 @@ const data = {
         {
             title: "2nd Year",
             url: "#",
-            icon: Bot,
+            icon: BookOpen,
+            isActive: true,
             items: [
                 { title: "Semester", url: "/dashboard/2/semester" },
                 { title: "Class", url: "/dashboard/2/class" },
@@ -76,7 +60,8 @@ const data = {
         {
             title: "3rd Year",
             url: "#",
-            icon: BookOpen,
+            icon: Library,
+            isActive: true,
             items: [
                 { title: "Semester", url: "/dashboard/3/semester" },
                 { title: "Class", url: "/dashboard/3/class" },
@@ -86,7 +71,8 @@ const data = {
         {
             title: "4th Year",
             url: "#",
-            icon: Settings2,
+            icon: GraduationCap,
+            isActive: true,
             items: [
                 { title: "Semester", url: "/dashboard/4/semester" },
                 { title: "Class", url: "/dashboard/4/class" },
@@ -94,23 +80,7 @@ const data = {
             ],
         },
     ],
-    projects: [
-        {
-            name: "Design Engineering",
-            url: "#",
-            icon: Frame,
-        },
-        {
-            name: "Sales & Marketing",
-            url: "#",
-            icon: PieChart,
-        },
-        {
-            name: "Travel",
-            url: "#",
-            icon: Map,
-        },
-    ],
+
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
@@ -121,7 +91,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             </SidebarHeader>
             <SidebarContent>
                 <NavMain items={data.navMain} />
-                <NavProjects projects={data.projects} />
             </SidebarContent>
             <SidebarFooter>
                 <NavUser user={data.user} />

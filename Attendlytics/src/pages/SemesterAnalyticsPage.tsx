@@ -1,12 +1,30 @@
 // src/pages/SemesterAnalyticsPage.tsx
 import React from "react";
 import { DatePickerWithRange } from "../components/DatePickerWithRange";
+import { useParams } from "react-router-dom";
 
 const SemesterAnalyticsPage: React.FC = () => {
+    const { year } = useParams();
+
+    const getYearText = (year: string | undefined) => {
+        switch (year) {
+            case "1":
+                return "1st Year";
+            case "2":
+                return "2nd Year";
+            case "3":
+                return "3rd Year";
+            case "4":
+                return "4th Year";
+            default:
+                return "";
+        }
+    };
+
     return (
         <>
             <div>
-                <h1>This is Semester Analytics of X year</h1>
+                <h1>This is {getYearText(year)} Semester Analytics</h1>
             </div>
             <div>
                 <DatePickerWithRange />
