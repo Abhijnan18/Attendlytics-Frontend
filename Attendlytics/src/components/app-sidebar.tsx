@@ -77,15 +77,15 @@ const data = {
             icon: Bot,
             items: [
                 {
-                    title: "Genesis",
+                    title: "Semester",
                     url: "#",
                 },
                 {
-                    title: "Explorer",
+                    title: "Class",
                     url: "#",
                 },
                 {
-                    title: "Quantum",
+                    title: "Subject",
                     url: "#",
                 },
             ],
@@ -96,19 +96,15 @@ const data = {
             icon: BookOpen,
             items: [
                 {
-                    title: "Introduction",
+                    title: "Semester",
                     url: "#",
                 },
                 {
-                    title: "Get Started",
+                    title: "Class",
                     url: "#",
                 },
                 {
-                    title: "Tutorials",
-                    url: "#",
-                },
-                {
-                    title: "Changelog",
+                    title: "Subject",
                     url: "#",
                 },
             ],
@@ -119,19 +115,15 @@ const data = {
             icon: Settings2,
             items: [
                 {
-                    title: "General",
+                    title: "Semester",
                     url: "#",
                 },
                 {
-                    title: "Team",
+                    title: "Class",
                     url: "#",
                 },
                 {
-                    title: "Billing",
-                    url: "#",
-                },
-                {
-                    title: "Limits",
+                    title: "Subject",
                     url: "#",
                 },
             ],

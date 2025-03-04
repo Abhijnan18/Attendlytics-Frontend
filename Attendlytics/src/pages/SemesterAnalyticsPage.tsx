@@ -6,6 +6,9 @@ const SemesterAnalyticsPage: React.FC = () => {
     return (
         <>
             <div>
+                <h1>This is Semster Analytics of X year</h1>
+            </div>
+            <div>
                 <DatePickerWithRange />
 
             </div>
