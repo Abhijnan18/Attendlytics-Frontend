@@ -7,9 +7,16 @@ import { StudentEngagementRate } from "../components/AnalyticsUI/StudentEngageme
 import { LowAttendanceList } from "../components/AnalyticsUI/LowAttendanceList";
 import { AttendanceDistributionPieChart } from "../components/AnalyticsUI/AttendanceDistributionPieChart";
 import { useParams } from "react-router-dom";
+import { DateRange } from "react-day-picker";
+import { differenceInDays } from "date-fns";
 
 const SemesterAnalyticsPage: React.FC = () => {
     const { year } = useParams();
+    const currentDate = new Date(); // Get the current date
+    const [dateRange, setDateRange] = React.useState<DateRange>({
+        from: currentDate, // Set default `from` to the current date
+        to: currentDate, // Set default `to` to the current date
+    });
 
     const getYearText = (year: string | undefined) => {
         switch (year) {
@@ -40,13 +47,18 @@ const SemesterAnalyticsPage: React.FC = () => {
 
             {/* Date Picker Section */}
             <div className="mb-8">
-                <DatePickerWithRange />
+                <DatePickerWithRange
+                    date={dateRange}
+                    onDateChange={(dateRange) => dateRange && setDateRange(dateRange)}
+                />
             </div>
 
-            {/* Attendance Rate Over Period without extra aspect ratio wrapper */}
-            <div className="mb-4">
-                <AttendanceRateOverPeriod />
-            </div>
+            {/* Conditionally render AttendanceRateOverPeriod */}
+            {dateRange?.from && dateRange?.to && differenceInDays(dateRange.to, dateRange.from) >= 3 && (
+                <div className="mb-4">
+                    <AttendanceRateOverPeriod />
+                </div>
+            )}
 
             {/* Grid Section for Cards */}
             <div className="grid grid-cols-1 gap-4 md:grid-cols-3 mb-4">
