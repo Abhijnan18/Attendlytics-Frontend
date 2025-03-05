@@ -1,7 +1,7 @@
 "use client"
 
-import { TrendingUp } from "lucide-react"
-import { CartesianGrid, Line, LineChart, XAxis } from "recharts"
+import { TrendingDown } from "lucide-react"
+import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
 
 import {
     Card,
@@ -18,12 +18,12 @@ import {
     ChartTooltipContent,
 } from "@/components/ui/chart"
 const chartData = [
-    { month: "January", desktop: 186, mobile: 80 },
-    { month: "February", desktop: 305, mobile: 200 },
-    { month: "March", desktop: 237, mobile: 120 },
-    { month: "April", desktop: 73, mobile: 190 },
-    { month: "May", desktop: 209, mobile: 130 },
-    { month: "June", desktop: 214, mobile: 140 },
+    { session: "1", desktop: 186 },
+    { session: "2", desktop: 305 },
+    { session: "3", desktop: 237 },
+    { session: "4", desktop: 73 },
+    { session: "5", desktop: 209 },
+    { session: "6", desktop: 214 },
 ]
 
 const chartConfig = {
@@ -31,62 +31,40 @@ const chartConfig = {
         label: "Desktop",
         color: "hsl(var(--chart-1))",
     },
-    mobile: {
-        label: "Mobile",
-        color: "hsl(var(--chart-2))",
-    },
 } satisfies ChartConfig
 
-export function Component() {
+export function AttendanceRate() {
     return (
         <Card>
             <CardHeader>
-                <CardTitle>Line Chart - Dots</CardTitle>
-                <CardDescription>January - June 2024</CardDescription>
+                <CardTitle>Attendance Rate</CardTitle>
+                <CardDescription>Session 1 - Session 6</CardDescription>
             </CardHeader>
             <CardContent>
                 <ChartContainer config={chartConfig}>
-                    <LineChart
-                        accessibilityLayer
-                        data={chartData}
-                        margin={{
-                            left: 12,
-                            right: 12,
-                        }}
-                    >
+                    <BarChart accessibilityLayer data={chartData}>
                         <CartesianGrid vertical={false} />
                         <XAxis
-                            dataKey="month"
+                            dataKey="session"
                             tickLine={false}
+                            tickMargin={10}
                             axisLine={false}
-                            tickMargin={8}
                             tickFormatter={(value) => value.slice(0, 3)}
                         />
                         <ChartTooltip
                             cursor={false}
                             content={<ChartTooltipContent hideLabel />}
                         />
-                        <Line
-                            dataKey="desktop"
-                            type="natural"
-                            stroke="var(--color-desktop)"
-                            strokeWidth={2}
-                            dot={{
-                                fill: "var(--color-desktop)",
-                            }}
-                            activeDot={{
-                                r: 6,
-                            }}
-                        />
-                    </LineChart>
+                        <Bar dataKey="desktop" fill="var(--color-desktop)" radius={8} />
+                    </BarChart>
                 </ChartContainer>
             </CardContent>
             <CardFooter className="flex-col items-start gap-2 text-sm">
                 <div className="flex gap-2 font-medium leading-none">
-                    Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
+                    Trending down by 5.2%<TrendingDown className="h-4 w-4" />
                 </div>
                 <div className="leading-none text-muted-foreground">
-                    Showing total visitors for the last 6 months
+                    Attendance decreases after 3rd session
                 </div>
             </CardFooter>
         </Card>
